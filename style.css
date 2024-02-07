@@ -1,0 +1,523 @@
+:root {
+  --fondo: #0b0b0b;
+  --principal: #0eb64b;
+  --blanco: #fafaf0;
+  --degradado: linear-gradient(#013011, #51ff91);
+  --degradadoNEGRO: linear-gradient(#0b0b0b, #0b0b0b46);
+}
+
+/*NO SELECIONABLE <------------------------*/
+#nonSelect {
+  -webkit-touch-callout: none; /* for mobile webkit */
+  -webkit-user-select: none; /* for webkit */
+  -moz-user-select: none; /* for firefox */
+  -ms-user-select: none; /* for internet explorer */
+  user-select: none; /* for standard css */
+}
+
+/*ESTILOS GENERALES <------------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /*scroll bar - firefox*/
+  scrollbar-width: thin;
+  scrollbar-color: #04b64b #3b3b3b;
+}
+/*scroll bar - chrome, edge, safari*/
+*::-webkit-scrollbar {
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: #1f1f1f;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #04b64b;
+  border-radius: 30px;
+}
+
+/*estilos generales cuerpo*/
+body {
+  margin: 0;
+  background: var(--fondo);
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/*SCROLL SUAVIZADO <------------------------*/
+html {
+  scroll-behavior: smooth;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/*FUENTES IMPORTADAS <------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+/*NAVEGADOR <------------------------*/
+header {
+  background: var(--background);
+  text-align: center;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  padding: 10px;
+  background: var(--degradadoNEGRO);
+  backdrop-filter: blur(4px);
+}
+.logo {
+  height: 60px;
+  margin-right: 300px;
+  margin-top: 10px;
+}
+.nav-toggle {
+  display: none;
+}
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: var(--blanco);
+  height: 3px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+}
+.nav-toggle-label span::before {
+  bottom: 0.5rem;
+}
+.nav-toggle-label span::after {
+  top: 0.5rem;
+}
+nav {
+  position: absolute;
+  text-align: right;
+  top: 100%;
+  left: 0;
+  background: var(--fondo);
+  width: 100%;
+  transform: scale(1, 0);
+  /*Animacion esconder*/
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav li {
+  margin-bottom: 1em;
+  margin-right: 1em;
+  margin-top: 1rem;
+}
+nav a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+nav a:hover {
+  color: var(--principal);
+}
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+/*REDIMENSION NAVEGADOR 1100PX <------------------------*/
+@media screen and (min-width: 1100px) {
+  .nav-toggle-label {
+    display: none;
+  }
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+  .logo {
+    grid-column: 2 / 3;
+  }
+  nav {
+    all: unset;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  nav ul {
+    display: flex;
+    justify-content: flex-end;
+  }
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+  nav a:hover::before {
+    transform: scale(1, 1);
+  }
+}
+
+
+
+/*TAMAÑO TELEVISOR<!!!-----------------------*/
+@media screen and (min-width: 1500px) {
+  /*TEXTO ANIMADO <-------------------------*/
+  .animacionTEXTO div::before {
+    content: "ilustraciones";
+    font-size: 7rem;
+    font-weight: bold;
+    text-align: center;
+    animation: cambiar-texto 20s infinite;
+    background: var(--degradado);
+    background-clip: text;
+    color: transparent;
+    margin-right: 40px;
+  }
+  .animacionTEXTO h1 {
+    font-size: 7rem;
+    display: flex;
+    align-items: center;
+    color: var(--blanco);
+    margin: 0;
+  }
+  .inicio {
+    display: flex;
+    justify-content: center;
+    padding: 200px 0px 100px 0px;
+  }
+  /*keyframes de la animacion texto*/
+  @keyframes cambiar-texto {
+    0% {
+      content: "impresiones";
+    }
+    50% {
+      content: "experiencias";
+    }
+    100% {
+      content: "ilustraciones";
+    }
+  }
+
+  /*FONDO ANIMADO HEADER <------------------------*/
+  .rectangulos {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 200px 0px 200px;
+  }
+  .rectangulos .fondo {
+    background-image: url(img/fondo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 60vh;
+    width: 40vh;
+    margin: 20px;
+    border-radius: 1000px 1000px 0px 0px;
+  }
+
+  /*SEPARADOR INFORMATIVO <------------------------*/
+  .separador {
+    color: var(--blanco);
+    display: flex;
+    justify-content: center;
+    padding: 60px;
+  }
+  .separador div {
+    margin: 30px;
+  }
+  .separador h2 {
+    font-size:3rem;
+    margin: 0px;
+  }
+  .separador p {
+    font-size: 1.25rem;
+  }
+
+  /*SECCION QUIENES SOMOS <------------------------*/
+  .nosotros {
+    color: var(--blanco);
+    display: flex;
+    flex-direction: row;
+    padding: 90px 0px 0px 250px;
+  }
+  .texto {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    margin: 10px;
+  }
+  .texto h1 {
+    font-size: 6.25rem;
+    line-height: 90px;
+  }
+  .texto strong {
+    background: var(--degradado);
+    background-clip: text;
+    color: transparent;
+  }
+  /*boton de contacto*/
+  .texto a {
+    background: var(--blanco);
+    color: var(--principal);
+    height: 60px;
+    width: 300px;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    margin-top: 40px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .texto a:hover {
+    background: var(--principal);
+    color: var(--blanco);
+  }
+
+  .nosotros .img {
+    display: flex;
+    align-items: center;
+  }
+  .nosotros img {
+    height: 900px;
+    width: 950px;
+  }
+}
+
+
+
+/*TAMAÑO PORTATIL <!!!----------------------*/
+@media screen and (min-width: 1025px) and (max-width: 1499px) {
+  /*TEXTO ANIMADO <-------------------------*/
+  .animacionTEXTO div::before {
+    content: "ilustraciones";
+    font-size: 5.4rem;
+    font-weight: bold;
+    text-align: center;
+    animation: cambiar-texto 20s infinite;
+    background: var(--degradado);
+    background-clip: text;
+    color: transparent;
+    margin-right: 30px;
+  }
+
+  .animacionTEXTO h1 {
+    font-size: 5.4rem;
+    display: flex;
+    align-items: center;
+    color: var(--blanco);
+    margin: 0;
+  }
+
+  .inicio {
+    display: flex;
+    justify-content: center;
+    padding: 200px 0px 100px 0px;
+  }
+  /*keyframes de la animacion texto*/
+  @keyframes cambiar-texto {
+    0% {
+      content: "impresiones";
+    }
+    50% {
+      content: "experiencias";
+    }
+    100% {
+      content: "ilustraciones";
+    }
+  }
+
+  /*FONDO ANIMADO HEADER <------------------------*/
+  .rectangulos {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 120px 0px 120px;
+  }
+  .rectangulos .fondo {
+    background-image: url(img/fondo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 60vh;
+    width: 40vh;
+    margin: 20px;
+    border-radius: 1000px 1000px 0px 0px;
+  }
+
+  /*SEPARADOR INFORMATIVO <------------------------*/
+  .separador {
+    color: var(--blanco);
+    display: flex;
+    justify-content: center;
+    padding: 60px;
+  }
+  .separador div {
+    margin: 30px;
+  }
+  .separador h2 {
+    font-size: 2rem;
+    margin: 0px;
+  }
+  .separador p {
+    font-size: 1.25rem;
+  }
+
+  /*SECCION QUIENES SOMOS <------------------------*/
+  .nosotros {
+    color: var(--blanco);
+    display: flex;
+    flex-direction: row;
+    padding: 0px 0px 70px 150px;
+  }
+  .texto {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    margin: 10px;
+  }
+  .texto h1 {
+    font-size: 6rem;
+    line-height: 90px;
+    white-space: pre-wrap;
+  }
+  .texto strong {
+    background: var(--degradado);
+    background-clip: text;
+    white-space: pre-wrap;
+    color: transparent;
+  }
+  .texto a {
+    background: var(--blanco);
+    color: var(--principal);
+    height: 60px;
+    width: 300px;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    margin-top: 40px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .texto a:hover {
+    background: var(--principal);
+    color: var(--blanco);
+  }
+  .nosotros .img {
+    display: flex;
+    align-items: center;
+  }
+  .nosotros img {
+    height: 800px;
+  }
+}
+
+
+
+/*TAMAÑO TABLET <!!!----------------------*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /*TEXTO ANIMADO*/
+  .animacionTEXTO {
+    color: var(--blanco);
+    text-align: center;
+    padding: 180px 0px 90px 0px;
+  }
+  .animacionTEXTO h1 {
+    font-size: 100px;
+  }
+  .card {
+    text-align: center;
+    width: 80%;
+  }
+  .texto-verde {
+    display: inline-block;
+    overflow: hidden;
+    height: 100px;
+  }
+  .texto-verde div {
+    animation-name: scroll;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-delay: 10s;
+    background: var(--degradado);
+    background-clip: text;
+    color: transparent;
+  }
+  /*keyframes de la animacion texto*/
+  @keyframes scroll {
+    0% {
+      transform: translateY(0%);
+    }
+    33% {
+      transform: translateY(-115%);
+    }
+    66% {
+      transform: translateY(-215%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  /*SEPARADOR INFORMATIVO <------------------------*/
+  .separador h2 {
+    font-size: 2.18rem;
+    margin: 0px;
+  }
+  .separador p {
+    font-size: 0.93rem;
+  }
+
+  /*SECCION QUIENES SOMOS <------------------------*/
+  .nosotros img {
+    height: 550px;
+  }
+  .texto {
+    font-size: 1.18rem;
+    margin: 10px;
+    padding-top: 0px;
+  }
+  .texto h1 {
+    font-size: 4.5rem;
+    line-height: 70px;
+  }
+  .texto button {
+    width: 250px;
+    height: 60px;
+  }
+  .nosotros {
+    padding-left: 60px;
+  }
+}
+
+
+
+/*TAMAÑO MOVIL <!!!----------------------*/
+@media screen and (min-width: 767px) {
+}
