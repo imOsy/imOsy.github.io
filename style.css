@@ -231,7 +231,7 @@ nav a:hover {
     padding: 0px 200px 0px 200px;
   }
   .rectangulos .fondo {
-    background-image: url(img/fondo.png);
+    background-image: url(img/fondo.gif);
     background-size: cover;
     background-repeat: no-repeat;
     height: 60vh;
@@ -360,7 +360,7 @@ nav a:hover {
     padding: 0px 120px 0px 120px;
   }
   .rectangulos .fondo {
-    background-image: url(img/fondo.png);
+    background-image: url(img/fondo.gif);
     background-size: cover;
     background-repeat: no-repeat;
     height: 60vh;
